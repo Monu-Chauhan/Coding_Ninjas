@@ -89,5 +89,6 @@ int main()
 
     root = takeInputLevelWise();
     printLevelWise(root);
+    
     // We always delete Tree TODO
 }
