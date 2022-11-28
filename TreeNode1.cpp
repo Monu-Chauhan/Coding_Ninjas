@@ -91,4 +91,6 @@ int main()
     printLevelWise(root);
     
     // We always delete Tree TODO
+    //Deleting tree
+    delete root;
 }
