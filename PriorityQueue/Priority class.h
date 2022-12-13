@@ -73,7 +73,7 @@ public:
             priority[minIndex] = priority[parentIndex];
             priority[parentIndex] = temp;
             parentIndex = minIndex;
-              leftIndex = 2 * parentIndex + 1;
+            leftIndex = 2 * parentIndex + 1;
             rightIndex = 2 * parentIndex + 2;
         }
         return ans;
