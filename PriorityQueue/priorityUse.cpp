@@ -13,5 +13,9 @@ int main()
         cin >> ele;
         p.insert(ele);
     }
-    p.display();
+    while (!p.isEmpty())
+    {
+        cout << p.RemoveMin() << " ";
+    }
+    
 }
