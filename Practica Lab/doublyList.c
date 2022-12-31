@@ -6,16 +6,7 @@ struct node
     struct node *previous;
     struct node *next;
 };
-int getsize(struct node *head)
-{
-    int size =0;
-    while (head!=NULL)
-    {
-        size++;
-        head= head->next;
-    }
-    return size;
-}
+
 struct node * delete_beg(struct node* head)
 {
     if(head==NULL)
@@ -176,8 +167,5 @@ int main()
     head = delete_end(head);
     head = delete_pos(head,0);
     head = delete_pos(head,3);
-    int size = getsize(head);
-    printf("\nSize : %d\n",size);
-    
     display(head);
 }
