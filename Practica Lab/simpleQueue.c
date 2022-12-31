@@ -77,7 +77,7 @@ int Getsize()
 }
 void display()
 {
-    for(int i=0;i<size;i++)
+    for(int i=front;i<=rear;i++)
     {
         printf("%d ",arr[i]);
     }

@@ -1,5 +1,5 @@
 #include<stdio.h>
-void insertion(int arr[],int size)
+void insertion(int *arr,int size)
 {
     for(int i=1;i<size;i++)
     {
@@ -21,7 +21,7 @@ void insertion(int arr[],int size)
 }
 int main()
 {
-    int arr[]={2,15,32,56,95,48,0,12,32,65,47};
+    int arr[]={2,15,32,56,95,48,0,12,32,105,47};
     insertion(arr,10);
     for(int i=0;i<10;i++)
     {

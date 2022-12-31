@@ -26,5 +26,7 @@ int main()
 {
     int arr[M]={1,5,12,23,34,35,45,56,67,78};
     binarySearch(arr,0,M-1,23);
+    binarySearch(arr,0,M-1,78);
+    binarySearch(arr,0,M-1,230);
     
 }
