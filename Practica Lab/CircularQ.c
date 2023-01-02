@@ -51,7 +51,7 @@ int pop()
 }
 void isFull()
 {
-    if(size==MAX-1)
+    if(size==MAX)
     {
         printf("Q is Full\n");
     }
@@ -77,10 +77,17 @@ int Getsize()
 }
 void display()
 {
-    for(int i=front;i<=rear;i++)
+    if(size==0)
+    {
+        printf("Nothing to print\n");
+        return;
+    }
+    int i;
+    for(i=front;i!=rear;i=(i+1)%MAX)
     {
         printf("%d ",arr[i]);
     }
+    printf("%d ",arr[i]);
 }
 int main()
 {

@@ -5,42 +5,52 @@ struct node
     int data;
     struct node *next;
 };
-
-struct node * delete_begin(struct node *head)
+int getSize(struct node *head)
 {
-    struct node *temp = head;
+    int size = 0;
+    while (head != NULL)
+    {
+        head = head->next;
+        size++;
+    }
+    return size;
+}
+struct node *delete_begin(struct node *head)
+{
+   
     if (head == NULL)
     {
         printf("Link list is empty\n");
+        return 0;
     }
-    head = head ->next;
+    struct node *temp = head;
+    head = head->next;
     free(temp);
     return head;
 }
-struct node * delete_end(struct node *head)
+struct node *delete_end(struct node *head)
 {
     struct node *temp = head;
     struct node *tempNxt = head->next;
     while (tempNxt->next != NULL)
     {
         temp = temp->next;
-        tempNxt= tempNxt->next;
+        tempNxt = tempNxt->next;
     }
-    temp ->next = NULL;
+    temp->next = NULL;
     free(tempNxt);
     return head;
-    
 }
-struct node * delete_at_pos(struct node *head,int pos)
+struct node *delete_at_pos(struct node *head, int pos)
 {
     struct node *temp = head;
     int size = getSize(head);
-    if(pos < 0 || size < pos)
+    if (pos < 0 || size < pos)
     {
         printf("Invalid pos\n");
         return 0;
     }
-    else if (pos==0)
+    else if (pos == 0)
     {
         head = head->next;
         free(temp);
@@ -50,13 +60,12 @@ struct node * delete_at_pos(struct node *head,int pos)
     {
         while (--pos)
         {
-            temp=temp->next;
+            temp = temp->next;
         }
-        struct node *del = temp ->next;
-        temp ->next = del->next;
+        struct node *del = temp->next;
+        temp->next = del->next;
         free(del);
         return head;
-        
     }
 }
 void Insert_at_pos(struct node **head, int item, int position)
@@ -130,15 +139,49 @@ void display(struct node *head_ref)
 int main()
 {
     struct node *head = NULL;
-    Insert_end(&head, 3);
-    Insert_end(&head, 4);
-    Insert_end(&head, 5);
-    Insert_begin(&head, 2);
-    Insert_bigin(&head, 1);
-    Insert_at_pos(&head, 6, 2);
-    head = delete_begin(head);
-    head = delete_end(head);
-    head = delete_at_pos(head,2);
+    printf("1.Insert_end 2.Insert_begin 3.Inset_at_pos 4.delete_end 5.delete_begin 6.delete_at pos 7.display 8.exit\n");
+    while (1)
+    {
+        int choice,data,index;
+        printf("Enter choice : \n");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            printf("Enter data : ");
+            scanf("%d",&data);
+            Insert_end(&head,data);
+            break;
+        case 2:
+            printf("Enter data : ");
+            scanf("%d",&data);
+            Insert_begin(&head,data);
+            break;
+        case 3:
+            printf("Enter data & index : ");
+            scanf("%d %d",&data,&index);
+            Insert_at_pos(&head,data,index);
+            break;
+        case 4:
+            head = delete_end(head);
+            break;
+        case 5:
+            head = delete_begin(head);
+            break;
+        case 6:
+            printf("Enter index : ");
+            scanf("%d",&index);
+            head = delete_at_pos(head,index);
+            break;
+        case 7:
+            display(head);
+            break;
+        case 8:
+            exit(0);
+        default:
+            printf("Enter valid option\n");
+            break;
+        }
+    }
 
-    display(head);
 }

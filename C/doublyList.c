@@ -6,7 +6,7 @@ struct node
     struct node *previous;
     struct node *next;
 };
-int getsize(struct node *head)
+/*int getsize(struct node *head)
 {
     int size =0;
     while (head!=NULL)
@@ -130,8 +130,8 @@ void insert_At_begin(struct node **head,int data)
     temp -> previous = newNode;
     *head = newNode;
 
-}
-void insert_At_last(struct node **head,int data)
+}*/
+void insertion(struct node **head,int data)
 {
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
     newNode->data = data;
@@ -151,20 +151,64 @@ void insert_At_last(struct node **head,int data)
     newNode->previous = temp;
     //return;
 }
+struct node * deletion(struct node * head)
+{
+    if(head == NULL)
+    {
+        printf("Empty\n");
+        return 0;
+    }
+    struct node * temp = head;
+    struct node *tempNxt = head->next;
+    while (tempNxt->next != NULL)
+    {
+        tempNxt = tempNxt->next;
+        temp = temp->next;
+    }
+    temp ->next = NULL;
+    free(tempNxt);
+    return head;
+    
+}
 void display(struct node *head)
 {
-    printf("NULL <--");
     while(head!=NULL)
     {
         printf(" %d <--> ",head->data);
         head= head->next;
     }
-    printf("NULL\n");
 }
 int main()
 {
     struct node *head = NULL;
-    insert_At_last(&head,3);
+     printf("1.Insert 2.delete 3.display 4.exit\n");
+    while (1)
+    {
+        int choice,data;
+        printf("Enter choice : \n");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            printf("Enter data : ");
+            scanf("%d",&data);
+            insertion(&head,data);
+            break;
+        case 2:
+            head = deletion(head);
+            break;
+        case 3:
+            display(head);
+            break;
+        
+        case 4:
+            exit(0);
+        default:
+            printf("Enter valid option\n");
+            break;
+        }
+    }
+   /*insert_At_last(&head,3);
     insert_At_last(&head,4);
     insert_At_last(&head,5);
     insert_At_last(&head,6);
@@ -179,5 +223,5 @@ int main()
     int size = getsize(head);
     printf("\nSize : %d\n",size);
     
-    display(head);
+    display(head);*/
 }
