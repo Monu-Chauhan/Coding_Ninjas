@@ -50,7 +50,7 @@ int removeMax()
         arr[maxIndex]=temp;
         parentIndex = maxIndex;
         leftIndex = 2*parentIndex +1;
-        rightIndex = 2*parentIndex +1;
+        rightIndex = 2*parentIndex +2;
     }
     return ans;
     
